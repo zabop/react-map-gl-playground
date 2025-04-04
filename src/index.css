@@ -1,0 +1,12 @@
+button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1; /* Put above map canvas */
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
