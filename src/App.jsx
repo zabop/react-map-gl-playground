@@ -38,12 +38,15 @@ function App() {
           key={index}
           longitude={marker.longitude}
           latitude={marker.latitude}
+          offset={[0, 128]}
           anchor="bottom"
           onClick={(e) => {
             e.originalEvent.stopPropagation(); // prevent triggering the map click
             handleMarkerClick(index);
           }}
-        />
+        >
+          <img src="https://cdn.iconscout.com/icon/free/png-256/free-crosshairs-icon-download-in-svg-png-gif-file-formats--ui-elements-pack-user-interface-icons-444638.png" />
+        </Marker>
       ))}
     </Map>
   );
