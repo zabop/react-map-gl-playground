@@ -20,11 +20,28 @@ const powerPoleLayer = {
   },
 };
 
+const lorain_oh_2024_source = {
+  type: "raster",
+  tiles: [
+    `https://tiles.arcgis.com/tiles/vGBb7WYV10mOJRNM/arcgis/rest/services/2024_Spring_Aerials/MapServer/tile/{z}/{y}/{x}`,
+  ],
+  maxzoom: 21,
+};
+
+const lorain_oh_2024_layer = {
+  id: "lorain-orthoimagery",
+  type: "raster",
+  source: "lorain",
+  paint: {},
+};
+
 function App() {
   const mapRef = React.useRef();
   const [markers, setMarkers] = React.useState([]);
 
   const handleMapClick = (event) => {
+    console.log("Markers:", markers);
+
     const { lng, lat } = event.lngLat;
     setMarkers((prev) => [...prev, { longitude: lng, latitude: lat }]);
 
@@ -35,6 +52,7 @@ function App() {
   };
 
   const handleMarkerClick = (indexToRemove) => {
+    console.log("Markers:", markers);
     setMarkers((prev) => prev.filter((_, index) => index !== indexToRemove));
   };
 
@@ -42,20 +60,25 @@ function App() {
     <Map
       ref={mapRef}
       initialViewState={{
-        longitude: -122.4,
-        latitude: 37.8,
+        longitude: -82.11,
+        latitude: 41.37,
         zoom: 14,
       }}
       style={{ width: "100vw", height: "100vh" }}
       mapStyle="https://api.maptiler.com/maps/hybrid/style.json?key=iG31hHzqPDdOfM8MmYsP"
       onClick={handleMapClick}
+      cursor="crosshair"
     >
+      <Source id="lorain" {...lorain_oh_2024_source}>
+        <Layer {...lorain_oh_2024_layer} />
+      </Source>
       {markers.map((marker, index) => (
         <Marker
           key={index}
           longitude={marker.longitude}
           latitude={marker.latitude}
-          offset={[0, 128]}
+          // offset={[0, 128]}
+          offset={[0, 256]}
           anchor="bottom"
           onClick={(e) => {
             e.originalEvent.stopPropagation();
@@ -63,7 +86,8 @@ function App() {
           }}
         >
           <img
-            src="https://cdn.iconscout.com/icon/free/png-256/free-crosshairs-icon-download-in-svg-png-gif-file-formats--ui-elements-pack-user-interface-icons-444638.png"
+            //src="https://cdn.iconscout.com/icon/free/png-256/free-crosshairs-icon-download-in-svg-png-gif-file-formats--ui-elements-pack-user-interface-icons-444638.png"
+            src="https://cdn-icons-png.flaticon.com/512/4330/4330677.png"
             alt="marker"
           />
         </Marker>
