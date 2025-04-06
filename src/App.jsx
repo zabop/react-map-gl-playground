@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Map, Marker, Source, Layer } from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { basestyle } from "./basestyle";
 
 const powerLineLayer = {
   type: "line",
@@ -65,7 +66,7 @@ function App() {
         zoom: 14,
       }}
       style={{ width: "100vw", height: "100vh" }}
-      mapStyle="https://api.maptiler.com/maps/hybrid/style.json?key=iG31hHzqPDdOfM8MmYsP"
+      mapStyle={basestyle}
       onClick={handleMapClick}
       cursor="crosshair"
     >
