@@ -1,22 +1,19 @@
 export const basestyle = {
   version: 8,
-  name: "Esri Satellite",
+  name: "OSM",
   sources: {
-    "esri-satellite": {
+    osm: {
       type: "raster",
-      tiles: [
-        "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-      ],
+      tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
       tileSize: 256,
-      attribution:
-        "Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community",
+      attribution: "OpenStreetMap contributors",
     },
   },
   layers: [
     {
-      id: "satellite",
+      id: "osm",
       type: "raster",
-      source: "esri-satellite",
+      source: "osm",
       minzoom: 0,
       maxzoom: 19,
     },
