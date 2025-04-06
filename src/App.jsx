@@ -41,8 +41,6 @@ function App() {
   const [markers, setMarkers] = React.useState([]);
 
   const handleMapClick = (event) => {
-    console.log("Markers:", markers);
-
     const { lng, lat } = event.lngLat;
     setMarkers((prev) => [...prev, { longitude: lng, latitude: lat }]);
 
@@ -50,11 +48,12 @@ function App() {
     if (map) {
       map.flyTo({ center: [lng, lat] });
     }
+    console.log("Markers:", markers);
   };
 
   const handleMarkerClick = (indexToRemove) => {
-    console.log("Markers:", markers);
     setMarkers((prev) => prev.filter((_, index) => index !== indexToRemove));
+    console.log("Markers:", markers);
   };
 
   return (
