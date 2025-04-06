@@ -7,7 +7,7 @@ const powerLineLayer = {
   "source-layer": "power_line",
   paint: {
     "line-color": "#FF5733",
-    "line-width": 2,
+    "line-width": 10,
   },
 };
 
@@ -16,7 +16,7 @@ const powerPoleLayer = {
   "source-layer": "power_tower",
   paint: {
     "circle-color": "#0000FF",
-    "circle-radius": 5,
+    "circle-radius": 20,
   },
 };
 
