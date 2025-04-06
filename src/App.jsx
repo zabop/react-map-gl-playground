@@ -61,8 +61,8 @@ function App() {
     <Map
       ref={mapRef}
       initialViewState={{
-        longitude: -82.11,
-        latitude: 41.37,
+        longitude: -82.17844,
+        latitude: 41.310079,
         zoom: 14,
       }}
       style={{ width: "100vw", height: "100vh" }}
