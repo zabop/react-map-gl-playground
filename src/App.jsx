@@ -2,6 +2,10 @@ import * as React from "react";
 import { Map, Marker, Source, Layer } from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { basestyle } from "./basestyle";
+import maplibregl from "maplibre-gl";
+import { cogProtocol } from "@geomatico/maplibre-cog-protocol";
+
+maplibregl.addProtocol("cog", cogProtocol);
 
 const powerLineLayer = {
   type: "line",
@@ -36,6 +40,12 @@ const lorain_oh_2024_layer = {
   paint: {},
 };
 
+const rasterSource = {
+  type: "raster",
+  url: "cog://https://labs.geomatico.es/maplibre-cog-protocol/data/image.tif",
+  tileSize: 256,
+};
+
 function App() {
   const mapRef = React.useRef();
   const [markers, setMarkers] = React.useState([]);
@@ -61,8 +71,8 @@ function App() {
     <Map
       ref={mapRef}
       initialViewState={{
-        longitude: -82.17844,
-        latitude: 41.310079,
+        longitude: 1.830571,
+        latitude: 41.59475,
         zoom: 14,
       }}
       style={{ width: "100vw", height: "100vh" }}
@@ -111,6 +121,14 @@ function App() {
         attribution="© OpenInfraMap contributors"
       >
         <Layer {...powerPoleLayer} />
+      </Source>
+      <Source
+        id="rasterSource"
+        type="raster"
+        url="cog://https://labs.geomatico.es/maplibre-cog-protocol/data/image.tif"
+        tileSize={256}
+      >
+        <Layer {...rasterSource} />
       </Source>
     </Map>
   );
