@@ -42,13 +42,14 @@ function App() {
 
   const handleMapClick = (event) => {
     const { lng, lat } = event.lngLat;
-    setMarkers((prev) => [...prev, { longitude: lng, latitude: lat }]);
+    const newMarkers = [...markers, { longitude: lng, latitude: lat }];
+    console.log("Markers:", newMarkers);
+    setMarkers(newMarkers);
 
     const map = mapRef.current?.getMap();
     if (map) {
       map.flyTo({ center: [lng, lat] });
     }
-    console.log("Markers:", markers);
   };
 
   const handleMarkerClick = (indexToRemove) => {
