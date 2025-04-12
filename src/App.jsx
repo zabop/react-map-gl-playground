@@ -25,21 +25,6 @@ const powerPoleLayer = {
   },
 };
 
-const lorain_oh_2024_source = {
-  type: "raster",
-  tiles: [
-    `https://tiles.arcgis.com/tiles/vGBb7WYV10mOJRNM/arcgis/rest/services/2024_Spring_Aerials/MapServer/tile/{z}/{y}/{x}`,
-  ],
-  maxzoom: 21,
-};
-
-const lorain_oh_2024_layer = {
-  id: "lorain-orthoimagery",
-  type: "raster",
-  source: "lorain",
-  paint: {},
-};
-
 const rasterSource = {
   type: "raster",
   url: "cog://https://labs.geomatico.es/maplibre-cog-protocol/data/image.tif",
@@ -80,9 +65,6 @@ function App() {
       onClick={handleMapClick}
       cursor="crosshair"
     >
-      <Source id="lorain" {...lorain_oh_2024_source}>
-        <Layer {...lorain_oh_2024_layer} />
-      </Source>
       {markers.map((marker, index) => (
         <Marker
           key={index}
