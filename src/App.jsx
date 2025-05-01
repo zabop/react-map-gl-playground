@@ -27,7 +27,7 @@ const powerPoleLayer = {
 
 const rasterSource = {
   type: "raster",
-  url: "cog://https://labs.geomatico.es/maplibre-cog-protocol/data/image.tif",
+  url: "cog://https://hel1.your-objectstorage.com/cogs/rgb-cog.tif",
   tileSize: 256,
 };
 
@@ -56,9 +56,12 @@ function App() {
     <Map
       ref={mapRef}
       initialViewState={{
-        longitude: 1.830571,
-        latitude: 41.59475,
-        zoom: 14,
+        longitude: 17.01339289,
+        latitude: 47.86016855,
+        // longitude: 1.830571,
+        // latitude: 41.59475,
+        zoom: 17,
+        maxZoom: 30,
       }}
       style={{ width: "100vw", height: "100vh" }}
       mapStyle={basestyle}
@@ -107,7 +110,8 @@ function App() {
       <Source
         id="rasterSource"
         type="raster"
-        url="cog://https://labs.geomatico.es/maplibre-cog-protocol/data/image.tif"
+        url="cog://https://hel1.your-objectstorage.com/cogs/rgb-cog.tif"
+        // url="cog://https://labs.geomatico.es/maplibre-cog-protocol/data/image.tif"
         tileSize={256}
       >
         <Layer {...rasterSource} />
